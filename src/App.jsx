@@ -15,7 +15,7 @@ import {
   Users,
 } from 'lucide-react'
 import { getApplicantsStatistics } from './api/client.js'
-import { buildAnalytics, formatNumber, formatPercent } from './utils/analytics.js'
+import { buildAnalytics } from './utils/analytics.js'
 import StatCard from './components/StatCard.jsx'
 import StatusBar from './components/StatusBar.jsx'
 import { DateAreaChart, DonutChart, VerticalBarChart } from './components/ChartCard.jsx'
@@ -26,10 +26,11 @@ const DatePicker = DatePickerModule.default || DatePickerModule
 registerLocale('ru', ru)
 
 const AUTO_REFRESH_MS = 30 * 60 * 1000
+const THEME_VERSION = 'light-primary-v1'
 
 const THEME_OPTIONS = [
-  { value: 'night', label: 'Ночь' },
   { value: 'light', label: 'Светлая' },
+  { value: 'night', label: 'Ночь' },
   { value: 'dark', label: 'Тёмная' },
 ]
 
@@ -81,10 +82,15 @@ function getDefaultRange() {
 
 function getDefaultTheme() {
   const savedTheme = localStorage.getItem('dashboard-theme')
+  const savedThemeVersion = localStorage.getItem('dashboard-theme-version')
   const legacyPrefix = ['app', 'le'].join('')
   if (savedTheme === `${legacyPrefix}-light`) return 'light'
   if (savedTheme === `${legacyPrefix}-dark`) return 'dark'
-  return THEME_OPTIONS.some((option) => option.value === savedTheme) ? savedTheme : 'night'
+  if (savedTheme === 'night' && savedThemeVersion !== THEME_VERSION) {
+    localStorage.setItem('dashboard-theme-version', THEME_VERSION)
+    return 'light'
+  }
+  return THEME_OPTIONS.some((option) => option.value === savedTheme) ? savedTheme : 'light'
 }
 
 function getDefaultSelectedDate() {
@@ -208,6 +214,7 @@ export default function App() {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
     localStorage.setItem('dashboard-theme', theme)
+    localStorage.setItem('dashboard-theme-version', THEME_VERSION)
   }, [theme])
 
   useEffect(() => {
@@ -361,7 +368,7 @@ export default function App() {
                   showWeekNumbers={range === 'week'}
                   locale="ru"
                   calendarStartDay={1}
-                  weekLabel="N"
+                  weekLabel="№"
                   dayClassName={getCalendarDayClassName}
                   showPopperArrow={false}
                   popperPlacement="bottom-end"

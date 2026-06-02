@@ -1693,29 +1693,29 @@ html[data-theme='night'] {
 
 html[data-theme='light'] {
   color-scheme: light;
-  --card: rgba(255, 255, 255, 0.78);
-  --card-border: rgba(0, 0, 0, 0.08);
-  --muted: #6e6e73;
-  --muted-strong: #424245;
-  --blue: #007aff;
-  --purple: #af52de;
-  --green: #34c759;
-  --amber: #ff9500;
-  --pink: #ff2d55;
-  --cyan: #32ade6;
-  --theme-text: #1d1d1f;
-  --theme-surface: rgba(255, 255, 255, 0.74);
-  --theme-surface-strong: rgba(255, 255, 255, 0.92);
-  --theme-soft: rgba(245, 245, 247, 0.86);
-  --theme-border: rgba(60, 60, 67, 0.13);
-  --theme-shadow: 0 18px 52px rgba(0, 0, 0, 0.08);
-  --theme-chart-tick: #6e6e73;
-  --theme-chart-grid: rgba(60, 60, 67, 0.12);
-  --chart-tick: #6e6e73;
-  --chart-grid: rgba(60, 60, 67, 0.12);
-  --chart-cursor: rgba(0, 122, 255, 0.08);
+  --card: rgba(255, 255, 255, 0.86);
+  --card-border: rgba(31, 78, 121, 0.12);
+  --muted: #687386;
+  --muted-strong: #334155;
+  --blue: #1f5f9f;
+  --purple: #6574a8;
+  --green: #2f8f83;
+  --amber: #b7862d;
+  --pink: #9b5560;
+  --cyan: #2f7f9f;
+  --theme-text: #142033;
+  --theme-surface: rgba(255, 255, 255, 0.78);
+  --theme-surface-strong: rgba(255, 255, 255, 0.96);
+  --theme-soft: rgba(238, 245, 252, 0.86);
+  --theme-border: rgba(31, 78, 121, 0.13);
+  --theme-shadow: 0 22px 70px rgba(31, 78, 121, 0.10);
+  --theme-chart-tick: #64748b;
+  --theme-chart-grid: rgba(31, 78, 121, 0.11);
+  --chart-tick: #64748b;
+  --chart-grid: rgba(31, 78, 121, 0.11);
+  --chart-cursor: rgba(31, 95, 159, 0.08);
   --chart-missing-fill: #ffffff;
-  --chart-missing-stroke: #8e8e93;
+  --chart-missing-stroke: #94a3b8;
   --chart-active-stroke: #ffffff;
 }
 
@@ -1749,9 +1749,10 @@ html[data-theme='dark'] {
 
 html[data-theme='light'] body {
   background:
-    radial-gradient(circle at 18% 8%, rgba(0, 122, 255, 0.10), transparent 34rem),
-    radial-gradient(circle at 86% 2%, rgba(175, 82, 222, 0.08), transparent 32rem),
-    linear-gradient(180deg, #f5f5f7 0%, #fbfbfd 46%, #eff3f8 100%);
+    radial-gradient(circle at 16% 8%, rgba(191, 219, 254, 0.60), transparent 34rem),
+    radial-gradient(circle at 84% 4%, rgba(224, 242, 254, 0.72), transparent 32rem),
+    radial-gradient(circle at 56% 100%, rgba(219, 234, 254, 0.64), transparent 42rem),
+    linear-gradient(135deg, #fdfbfb 0%, #f5f7fa 42%, #e7f0fd 100%);
   color: var(--theme-text);
 }
 
@@ -1773,7 +1774,8 @@ html:is([data-theme='light'], [data-theme='dark']) .legend-list__item strong {
 }
 
 html[data-theme='light'] .hero h1 {
-  color: #1d1d1f;
+  color: #10233f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
 html[data-theme='dark'] .hero h1 {
@@ -1807,8 +1809,29 @@ html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar.react-dat
   background: linear-gradient(180deg, var(--theme-surface-strong), var(--theme-surface));
 }
 
+html[data-theme='light'] .range-panel,
+html[data-theme='light'] .status-bar,
+html[data-theme='light'] .panel,
+html[data-theme='light'] .period-menu__panel {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 251, 255, 0.82)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(232, 241, 252, 0.40));
+}
+
+html[data-theme='light'] .range-panel {
+  box-shadow: 0 18px 54px rgba(31, 78, 121, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
 html:is([data-theme='light'], [data-theme='dark']) .stat-card {
   background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 11%, var(--theme-surface-strong)), var(--theme-surface));
+}
+
+html[data-theme='light'] .stat-card {
+  border-color: color-mix(in srgb, var(--accent) 18%, rgba(31, 78, 121, 0.10));
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 62%),
+    linear-gradient(145deg, color-mix(in srgb, var(--accent) 8%, #ffffff), rgba(248, 251, 255, 0.88));
+  box-shadow: 0 18px 48px rgba(31, 78, 121, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.78);
 }
 
 html:is([data-theme='light'], [data-theme='dark']) .stat-card::before {
@@ -1833,6 +1856,28 @@ html:is([data-theme='light'], [data-theme='dark']) .calendar-button {
   box-shadow: none;
 }
 
+html[data-theme='light'] .refresh-button {
+  border-color: rgba(31, 95, 159, 0.18);
+  background: linear-gradient(135deg, #1f5f9f, #2f7f9f);
+  color: #ffffff;
+  box-shadow: 0 18px 42px rgba(31, 95, 159, 0.22);
+}
+
+html[data-theme='light'] .refresh-button:hover:not(:disabled) {
+  border-color: rgba(31, 95, 159, 0.32);
+  background: linear-gradient(135deg, #174f88, #28738f);
+  color: #ffffff;
+}
+
+html[data-theme='light'] .period-menu__button,
+html[data-theme='light'] .calendar-button {
+  border-color: rgba(31, 95, 159, 0.18);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(232, 241, 252, 0.80)),
+    linear-gradient(135deg, rgba(31, 95, 159, 0.08), rgba(47, 127, 159, 0.04));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 10px 24px rgba(31, 78, 121, 0.08);
+}
+
 html:is([data-theme='light'], [data-theme='dark']) .range-tab--active,
 html:is([data-theme='light'], [data-theme='dark']) .period-menu__button:hover,
 html:is([data-theme='light'], [data-theme='dark']) .period-menu__button--open,
@@ -1841,6 +1886,17 @@ html:is([data-theme='light'], [data-theme='dark']) .calendar-button:hover:not(:d
   border-color: color-mix(in srgb, var(--blue) 42%, var(--theme-border));
   background: color-mix(in srgb, var(--blue) 12%, var(--theme-surface-strong));
   color: var(--theme-text);
+}
+
+html[data-theme='light'] .range-tab--active,
+html[data-theme='light'] .period-menu__button--open,
+html[data-theme='light'] .period-menu__button:hover,
+html[data-theme='light'] .calendar-button:hover:not(:disabled) {
+  border-color: rgba(31, 95, 159, 0.32);
+  background:
+    linear-gradient(135deg, rgba(31, 95, 159, 0.14), rgba(47, 127, 159, 0.10)),
+    rgba(255, 255, 255, 0.92);
+  color: #10233f;
 }
 
 html:is([data-theme='light'], [data-theme='dark']) .range-tab--active {
@@ -1855,6 +1911,19 @@ html:is([data-theme='light'], [data-theme='dark']) .table-list__empty {
   background: var(--theme-soft);
 }
 
+html[data-theme='light'] .table-list__row,
+html[data-theme='light'] .table-loading__row,
+html[data-theme='light'] .chart-loading,
+html[data-theme='light'] .table-list__empty,
+html[data-theme='light'] .period-menu__current,
+html[data-theme='light'] .calendar-control,
+html[data-theme='light'] .campaign-year-control {
+  border-color: rgba(31, 78, 121, 0.10);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(239, 246, 255, 0.58)),
+    rgba(255, 255, 255, 0.72);
+}
+
 html:is([data-theme='light'], [data-theme='dark']) .table-list__rank {
   color: var(--blue);
   background: color-mix(in srgb, var(--blue) 12%, transparent);
@@ -1865,6 +1934,11 @@ html:is([data-theme='light'], [data-theme='dark']) .chart-tooltip {
   background: var(--theme-surface-strong);
   color: var(--theme-text);
   box-shadow: var(--theme-shadow);
+}
+
+html[data-theme='light'] .chart-tooltip {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 54px rgba(31, 78, 121, 0.16);
 }
 
 html:is([data-theme='light'], [data-theme='dark']) .chart-tooltip__label,
