@@ -680,6 +680,12 @@ button {
   color: #f8fafc !important;
 }
 
+.bar-value-label {
+  fill: var(--theme-text, #f8fafc);
+  font-size: 14px;
+  font-weight: 800;
+}
+
 .spin {
   animation: spin 0.8s linear infinite;
 }
@@ -1699,7 +1705,7 @@ html[data-theme='light'] {
   --muted-strong: #334155;
   --blue: #1f5f9f;
   --purple: #6574a8;
-  --green: #2f8f83;
+  --green: #16806f;
   --amber: #b7862d;
   --pink: #9b5560;
   --cyan: #2f7f9f;

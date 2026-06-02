@@ -5,6 +5,7 @@ import {
   BarChart,
   CartesianGrid,
   Cell,
+  LabelList,
   Pie,
   PieChart,
   ResponsiveContainer,
@@ -151,12 +152,13 @@ export function VerticalBarChart({ title, subtitle, data, loading = false }) {
           <ChartLoading variant="bar" />
         ) : (
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={data} margin={{ top: 8, right: 20, left: 0, bottom: 10 }}>
+            <BarChart data={data} margin={{ top: 28, right: 20, left: 0, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
               <XAxis dataKey="name" tick={{ fill: 'var(--chart-tick)', fontSize: 13 }} tickLine={false} axisLine={false} interval={0} />
               <YAxis tick={{ fill: 'var(--chart-tick)', fontSize: 14 }} tickLine={false} axisLine={false} />
               <Tooltip content={<CustomTooltip />} cursor={cursorProps} />
               <Bar dataKey="quantity" name="Заявок" radius={[12, 12, 0, 0]}>
+                <LabelList dataKey="quantity" position="top" formatter={formatNumber} className="bar-value-label" />
                 {data.map((entry, index) => (
                   <Cell key={entry.name} fill={CHART_COLORS[index % CHART_COLORS.length]} />
                 ))}
@@ -182,7 +184,7 @@ export function DonutChart({ title, subtitle, data, loading = false }) {
             <div className="chart chart--donut">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                  <Pie data={data} dataKey="quantity" nameKey="name" innerRadius="58%" outerRadius="84%" paddingAngle={3}>
+                  <Pie data={data} dataKey="quantity" nameKey="name" innerRadius="58%" outerRadius="84%" paddingAngle={3} minAngle={3}>
                     {data.map((entry, index) => (
                       <Cell key={entry.name} fill={CHART_COLORS[index % CHART_COLORS.length]} />
                     ))}
