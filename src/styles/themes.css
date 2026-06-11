@@ -1,0 +1,450 @@
+﻿html[data-theme='night'] {
+  color-scheme: dark;
+}
+
+html[data-theme='light'] {
+  color-scheme: light;
+  --card: rgba(255, 255, 255, 0.86);
+  --card-border: rgba(31, 78, 121, 0.12);
+  --muted: #687386;
+  --muted-strong: #334155;
+  --blue: #1f5f9f;
+  --purple: #6574a8;
+  --green: #16806f;
+  --amber: #b7862d;
+  --pink: #9b5560;
+  --cyan: #2f7f9f;
+  --theme-text: #142033;
+  --theme-surface: rgba(255, 255, 255, 0.78);
+  --theme-surface-strong: rgba(255, 255, 255, 0.96);
+  --theme-soft: rgba(238, 245, 252, 0.86);
+  --theme-border: rgba(31, 78, 121, 0.13);
+  --theme-shadow: 0 22px 70px rgba(31, 78, 121, 0.10);
+  --theme-chart-tick: #64748b;
+  --theme-chart-grid: rgba(31, 78, 121, 0.11);
+  --chart-tick: #64748b;
+  --chart-grid: rgba(31, 78, 121, 0.11);
+  --chart-cursor: rgba(31, 95, 159, 0.08);
+  --chart-missing-fill: #ffffff;
+  --chart-missing-stroke: #94a3b8;
+  --chart-active-stroke: #ffffff;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --card: rgba(28, 28, 30, 0.78);
+  --card-border: rgba(255, 255, 255, 0.10);
+  --muted: #98989d;
+  --muted-strong: #d1d1d6;
+  --blue: #0a84ff;
+  --purple: #bf5af2;
+  --green: #30d158;
+  --amber: #ff9f0a;
+  --pink: #ff375f;
+  --cyan: #64d2ff;
+  --theme-text: #f5f5f7;
+  --theme-surface: rgba(28, 28, 30, 0.78);
+  --theme-surface-strong: rgba(44, 44, 46, 0.92);
+  --theme-soft: rgba(44, 44, 46, 0.70);
+  --theme-border: rgba(255, 255, 255, 0.12);
+  --theme-shadow: 0 22px 70px rgba(0, 0, 0, 0.38);
+  --theme-chart-tick: #c7c7cc;
+  --theme-chart-grid: rgba(255, 255, 255, 0.12);
+  --chart-tick: #c7c7cc;
+  --chart-grid: rgba(255, 255, 255, 0.12);
+  --chart-cursor: rgba(255, 255, 255, 0.08);
+  --chart-missing-fill: #1c1c1e;
+  --chart-missing-stroke: #8e8e93;
+  --chart-active-stroke: #f5f5f7;
+}
+
+html[data-theme='light'] body {
+  background:
+    radial-gradient(circle at 16% 8%, rgba(191, 219, 254, 0.60), transparent 34rem),
+    radial-gradient(circle at 84% 4%, rgba(224, 242, 254, 0.72), transparent 32rem),
+    radial-gradient(circle at 56% 100%, rgba(219, 234, 254, 0.64), transparent 42rem),
+    linear-gradient(135deg, #fdfbfb 0%, #f5f7fa 42%, #e7f0fd 100%);
+  color: var(--theme-text);
+}
+
+html[data-theme='dark'] body {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(10, 132, 255, 0.18), transparent 34rem),
+    radial-gradient(circle at 86% 2%, rgba(191, 90, 242, 0.14), transparent 32rem),
+    linear-gradient(180deg, #000000 0%, #111114 52%, #1c1c1e 100%);
+  color: var(--theme-text);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .app-shell,
+html:is([data-theme='light'], [data-theme='dark']) .hero h1,
+html:is([data-theme='light'], [data-theme='dark']) .panel h2,
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel h2,
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__header-actions > strong,
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__meta strong,
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__direction-main span,
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__direction-progress strong,
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__direction-numbers strong,
+html:is([data-theme='light'], [data-theme='dark']) .stat-card__value,
+html:is([data-theme='light'], [data-theme='dark']) .table-list strong,
+html:is([data-theme='light'], [data-theme='dark']) .legend-list__item strong {
+  color: var(--theme-text);
+}
+
+html[data-theme='light'] .hero h1 {
+  color: #10233f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+html[data-theme='dark'] .hero h1 {
+  color: #f5f5f7;
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .refresh-button,
+html:is([data-theme='light'], [data-theme='dark']) .page-tabs,
+html:is([data-theme='light'], [data-theme='dark']) .range-panel,
+html:is([data-theme='light'], [data-theme='dark']) .status-bar,
+html:is([data-theme='light'], [data-theme='dark']) .panel,
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel,
+html:is([data-theme='light'], [data-theme='dark']) .stat-card,
+html:is([data-theme='light'], [data-theme='dark']) .period-menu__button,
+html:is([data-theme='light'], [data-theme='dark']) .period-menu__panel,
+html:is([data-theme='light'], [data-theme='dark']) .period-menu__panel::before,
+html:is([data-theme='light'], [data-theme='dark']) .calendar-control,
+html:is([data-theme='light'], [data-theme='dark']) .period-menu__current,
+html:is([data-theme='light'], [data-theme='dark']) .period-menu__hint,
+html:is([data-theme='light'], [data-theme='dark']) .campaign-year-control,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar.react-datepicker {
+  border-color: var(--theme-border);
+  background: var(--theme-surface);
+  box-shadow: var(--theme-shadow);
+  backdrop-filter: blur(22px) saturate(160%);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .panel,
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel,
+html:is([data-theme='light'], [data-theme='dark']) .status-bar,
+html:is([data-theme='light'], [data-theme='dark']) .range-panel,
+html:is([data-theme='light'], [data-theme='dark']) .period-menu__panel,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar.react-datepicker {
+  background: linear-gradient(180deg, var(--theme-surface-strong), var(--theme-surface));
+}
+
+html[data-theme='light'] .range-panel,
+html[data-theme='light'] .status-bar,
+html[data-theme='light'] .panel,
+html[data-theme='light'] .kcp-panel,
+html[data-theme='light'] .period-menu__panel {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 251, 255, 0.82)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(232, 241, 252, 0.40));
+}
+
+html[data-theme='light'] .range-panel {
+  box-shadow: 0 18px 54px rgba(31, 78, 121, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel {
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--green) 16%, transparent), transparent 56%),
+    linear-gradient(135deg, color-mix(in srgb, var(--blue) 10%, var(--theme-surface-strong)), var(--theme-surface));
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__track {
+  border-color: color-mix(in srgb, var(--blue) 30%, var(--theme-border));
+  background: color-mix(in srgb, var(--theme-soft) 72%, transparent);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__toggle,
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__search input,
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__sort,
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__direction,
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__empty {
+  border-color: var(--theme-border);
+  background: color-mix(in srgb, var(--theme-soft) 62%, transparent);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__sort-button--active {
+  color: #ffffff;
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .kcp-panel__direction-track {
+  border-color: color-mix(in srgb, var(--blue) 34%, var(--theme-border));
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--blue) 12%, transparent), color-mix(in srgb, var(--green) 10%, transparent)),
+    color-mix(in srgb, var(--theme-soft) 82%, transparent);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .stat-card {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 11%, var(--theme-surface-strong)), var(--theme-surface));
+}
+
+html[data-theme='light'] .stat-card {
+  border-color: color-mix(in srgb, var(--accent) 18%, rgba(31, 78, 121, 0.10));
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 62%),
+    linear-gradient(145deg, color-mix(in srgb, var(--accent) 8%, #ffffff), rgba(248, 251, 255, 0.88));
+  box-shadow: 0 18px 48px rgba(31, 78, 121, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .stat-card::before {
+  opacity: 0.36;
+  filter: blur(2px);
+}
+
+html[data-theme='light'] .stat-card::before {
+  opacity: 0.24;
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .refresh-button,
+html:is([data-theme='light'], [data-theme='dark']) .page-tab,
+html:is([data-theme='light'], [data-theme='dark']) .period-menu__button,
+html:is([data-theme='light'], [data-theme='dark']) .period-menu__close,
+html:is([data-theme='light'], [data-theme='dark']) .campaign-year-control__button,
+html:is([data-theme='light'], [data-theme='dark']) .calendar-reset,
+html:is([data-theme='light'], [data-theme='dark']) .range-tab,
+html:is([data-theme='light'], [data-theme='dark']) .calendar-button {
+  border-color: var(--theme-border);
+  background: var(--theme-soft);
+  color: var(--theme-text);
+  box-shadow: none;
+}
+
+html[data-theme='light'] .refresh-button {
+  border-color: rgba(31, 95, 159, 0.18);
+  background: linear-gradient(135deg, #1f5f9f, #2f7f9f);
+  color: #ffffff;
+  box-shadow: 0 18px 42px rgba(31, 95, 159, 0.22);
+}
+
+html[data-theme='light'] .refresh-button:hover:not(:disabled) {
+  border-color: rgba(31, 95, 159, 0.32);
+  background: linear-gradient(135deg, #174f88, #28738f);
+  color: #ffffff;
+}
+
+html[data-theme='light'] .period-menu__button,
+html[data-theme='light'] .calendar-button {
+  border-color: rgba(31, 95, 159, 0.18);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(232, 241, 252, 0.80)),
+    linear-gradient(135deg, rgba(31, 95, 159, 0.08), rgba(47, 127, 159, 0.04));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 10px 24px rgba(31, 78, 121, 0.08);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .range-tab--active,
+html:is([data-theme='light'], [data-theme='dark']) .page-tab--active,
+html:is([data-theme='light'], [data-theme='dark']) .period-menu__button:hover,
+html:is([data-theme='light'], [data-theme='dark']) .period-menu__button--open,
+html:is([data-theme='light'], [data-theme='dark']) .refresh-button:hover:not(:disabled),
+html:is([data-theme='light'], [data-theme='dark']) .calendar-button:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--blue) 42%, var(--theme-border));
+  background: color-mix(in srgb, var(--blue) 12%, var(--theme-surface-strong));
+  color: var(--theme-text);
+}
+
+html[data-theme='light'] .range-tab--active,
+html[data-theme='light'] .period-menu__button--open,
+html[data-theme='light'] .period-menu__button:hover,
+html[data-theme='light'] .calendar-button:hover:not(:disabled) {
+  border-color: rgba(31, 95, 159, 0.32);
+  background:
+    linear-gradient(135deg, rgba(31, 95, 159, 0.14), rgba(47, 127, 159, 0.10)),
+    rgba(255, 255, 255, 0.92);
+  color: #10233f;
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .range-tab--active {
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--blue) 14%, transparent);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .table-list__row,
+html:is([data-theme='light'], [data-theme='dark']) .specialties-summary span,
+html:is([data-theme='light'], [data-theme='dark']) .specialties-table td,
+html:is([data-theme='light'], [data-theme='dark']) .table-loading__row,
+html:is([data-theme='light'], [data-theme='dark']) .chart-loading,
+html:is([data-theme='light'], [data-theme='dark']) .table-list__empty {
+  border-color: var(--theme-border);
+  background: var(--theme-soft);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .donut-legend__row {
+  border-color: var(--theme-border);
+  background: color-mix(in srgb, var(--theme-soft) 58%, transparent);
+}
+
+html[data-theme='light'] .donut-legend__row {
+  border-color: rgba(31, 78, 121, 0.08);
+  background:
+    linear-gradient(180deg, rgba(248, 251, 255, 0.62), rgba(238, 245, 252, 0.38)),
+    rgba(255, 255, 255, 0.34);
+}
+
+html[data-theme='dark'] .donut-legend__row {
+  border-color: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+html[data-theme='light'] .table-list__row,
+html[data-theme='light'] .specialties-summary span,
+html[data-theme='light'] .specialties-table td,
+html[data-theme='light'] .table-loading__row,
+html[data-theme='light'] .chart-loading,
+html[data-theme='light'] .table-list__empty,
+html[data-theme='light'] .specialties-search,
+html[data-theme='light'] .specialties-select,
+html[data-theme='light'] .period-menu__current,
+html[data-theme='light'] .calendar-control,
+html[data-theme='light'] .campaign-year-control {
+  border-color: rgba(31, 78, 121, 0.10);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(239, 246, 255, 0.58)),
+    rgba(255, 255, 255, 0.72);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .table-list__rank {
+  color: var(--blue);
+  background: color-mix(in srgb, var(--blue) 12%, transparent);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .specialties-search,
+html:is([data-theme='light'], [data-theme='dark']) .specialties-select {
+  border-color: var(--theme-border);
+  background: var(--theme-soft);
+  color: var(--theme-text);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .specialties-summary strong,
+html:is([data-theme='light'], [data-theme='dark']) .specialties-table td:first-child {
+  color: var(--theme-text);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .specialties-table th {
+  background: var(--theme-surface-strong);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .chart-tooltip {
+  border-color: var(--theme-border);
+  background: var(--theme-surface-strong);
+  color: var(--theme-text);
+  box-shadow: var(--theme-shadow);
+}
+
+html[data-theme='light'] .chart-tooltip {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 54px rgba(31, 78, 121, 0.16);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .chart-tooltip__label,
+html:is([data-theme='light'], [data-theme='dark']) .chart-tooltip__item,
+html:is([data-theme='light'], [data-theme='dark']) .chart-tooltip__item strong,
+html:is([data-theme='light'], [data-theme='dark']) .recharts-tooltip-label,
+html:is([data-theme='light'], [data-theme='dark']) .recharts-tooltip-item,
+html:is([data-theme='light'], [data-theme='dark']) .recharts-tooltip-item-name,
+html:is([data-theme='light'], [data-theme='dark']) .recharts-tooltip-item-value,
+html:is([data-theme='light'], [data-theme='dark']) .recharts-tooltip-item-separator {
+  color: var(--theme-text) !important;
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .recharts-cartesian-axis-tick-value,
+html:is([data-theme='light'], [data-theme='dark']) .recharts-text {
+  fill: var(--theme-chart-tick) !important;
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .recharts-cartesian-grid line {
+  stroke: var(--theme-chart-grid) !important;
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .legend-list__item,
+html:is([data-theme='light'], [data-theme='dark']) .table-list__name,
+html:is([data-theme='light'], [data-theme='dark']) .summary-card p {
+  color: var(--muted-strong);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__header {
+  border-color: var(--theme-border);
+  background: color-mix(in srgb, var(--blue) 9%, var(--theme-surface-strong));
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__current-month,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker-time__header,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker-year-header,
+html:is([data-theme='light'], [data-theme='dark']) .period-menu__header strong,
+html:is([data-theme='light'], [data-theme='dark']) .campaign-year-control__text strong {
+  color: var(--theme-text);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__day-name,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__day,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__time-name,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__month-text,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__quarter-text,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__year-text,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__week-number {
+  color: var(--muted-strong);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__day-name,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__week-number {
+  color: var(--muted);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__day:hover,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__month-text:hover,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__year-text:hover {
+  background: color-mix(in srgb, var(--blue) 12%, transparent);
+  color: var(--theme-text);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__day--keyboard-selected,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__day--selected,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__month-text--keyboard-selected,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__month-text--selected,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__year-text--keyboard-selected,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__year-text--selected,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-start,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-end,
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-single {
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  color: #ffffff;
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__day.dashboard-calendar__day--in-range {
+  background: color-mix(in srgb, var(--blue) 14%, transparent);
+  color: var(--theme-text);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .dashboard-calendar .react-datepicker__navigation-icon::before {
+  border-color: var(--theme-text);
+}
+
+html[data-theme='light'] .chart-loading__ring::before {
+  background: #ffffff;
+}
+
+html[data-theme='dark'] .chart-loading__ring::before {
+  background: #1c1c1e;
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .chart-loading::after,
+html:is([data-theme='light'], [data-theme='dark']) .table-loading__row::after,
+html:is([data-theme='light'], [data-theme='dark']) .stat-card[aria-busy='true']::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+}
+
+html:is([data-theme='light'], [data-theme='dark']) .theme-switcher {
+  border-color: var(--theme-border);
+  background: var(--theme-surface);
+  color: var(--muted);
+  box-shadow: none;
+}
+
+html[data-theme='dark'] .theme-switcher option {
+  color: #f5f5f7;
+  background: #1c1c1e;
+}
+
+@media (max-width: 780px) {
+  .dashboard-footer {
+    justify-content: center;
+  }
+}

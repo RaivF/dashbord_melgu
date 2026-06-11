@@ -1,4 +1,15 @@
-const FUNDING_TYPES = ['Бюджетная основа', 'Полное возмещение затрат', 'Целевой прием']
+import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import { parseSpecialtiesMxl } from '../src/utils/specialties.js'
+
+const FUNDING_TYPES = ['Бюджетная основа', 'Полное возмещение затрат', 'Целевой прием', 'Отдельная квота', 'Особая квота']
+const FUNDING_MULTIPLIERS = new Map([
+  ['Бюджетная основа', 1.55],
+  ['Полное возмещение затрат', 1.02],
+  ['Целевой прием', 0.48],
+  ['Отдельная квота', 0.16],
+  ['Особая квота', 0.12],
+])
 const FORMS = ['Очная', 'Заочная', 'Очно-Заочная']
 const DEGREES = [
   'Среднее профессиональное образование',
@@ -18,6 +29,57 @@ const SPECIALTIES = [
   { code: '23.03.03', name: 'Эксплуатация транспортно-технологических машин и комплексов' },
   { code: '19.03.04', name: 'Технология продукции и организация общественного питания' },
 ]
+const SPECIALTIES_MXL_PATH = fileURLToPath(new URL('../public/specialties.mxl', import.meta.url))
+
+function loadSpecialties() {
+  try {
+    const rows = parseSpecialtiesMxl(readFileSync(SPECIALTIES_MXL_PATH))
+    return rows.length ? rows.map(({ code, name }) => ({ code, name })) : SPECIALTIES
+  } catch {
+    return SPECIALTIES
+  }
+}
+
+const MOCK_SPECIALTIES = loadSpecialties()
+
+function buildAdmissionDirectionPlans(total, year) {
+  const weights = MOCK_SPECIALTIES.map((specialty, index) => ({
+    ...specialty,
+    weight: 0.82 + seededRandom(year, index, 419) * 0.74,
+  }))
+  const weightTotal = weights.reduce((sum, item) => sum + item.weight, 0)
+  let allocated = 0
+
+  return weights.map((item, index) => {
+    const quantity = index === weights.length - 1
+      ? total - allocated
+      : Math.round((total * item.weight) / weightTotal)
+    allocated += quantity
+
+    return {
+      code: item.code,
+      name: item.name,
+      quantity,
+    }
+  })
+}
+
+function buildAdmissionControlNumbers(year) {
+  const yearShift = Math.round(seededRandom(year, 311) * 420)
+  const total = 32000 + yearShift
+
+  return {
+    total,
+    directions: buildAdmissionDirectionPlans(total, year),
+    categories: [
+      { name: 'Бюджетная основа', quantity: Math.round(total * 0.44) },
+      { name: 'Платное обучение', quantity: Math.round(total * 0.34) },
+      { name: 'Целевой прием', quantity: Math.round(total * 0.13) },
+      { name: 'Отдельная квота', quantity: Math.round(total * 0.05) },
+      { name: 'Особая квота', quantity: Math.round(total * 0.04) },
+    ],
+  }
+}
 
 function getDaysInYear(year) {
   return new Date(Date.UTC(Number(year), 1, 29)).getUTCMonth() === 1 ? 366 : 365
@@ -70,15 +132,11 @@ function buildMockItems(year, previousYearMode = false) {
       FORMS.forEach((form, formIndex) => {
         const degree = DEGREES[(day + fundingIndex + formIndex) % DEGREES.length]
         const method = METHODS[(day + formIndex + fundingIndex) % METHODS.length]
-        const specialty = SPECIALTIES[(day + fundingIndex * 2 + formIndex) % SPECIALTIES.length]
+        const specialty = MOCK_SPECIALTIES[(day + fundingIndex * 2 + formIndex) % MOCK_SPECIALTIES.length]
         const random = seededRandom(year, day, fundingIndex, formIndex)
         const dayNoise = 0.72 + random * 0.70
         const base = 2 + fundingIndex * 5 + formIndex * 3 + Math.round(random * 11)
-        const fundingMultiplier = fundingType === 'Бюджетная основа'
-          ? 1.55
-          : fundingType === 'Целевой прием'
-            ? 0.48
-            : 1.02
+        const fundingMultiplier = FUNDING_MULTIPLIERS.get(fundingType) || 1
         const formMultiplier = form === 'Очная' ? 1.18 : form === 'Заочная' ? 0.78 : 0.62
         const methodMultiplier = method.includes('Суперсервис') ? 1.12 : method === 'Веб' ? 1.22 : method === 'Почта' ? 0.28 : 1
         const rawQuantity = base * seasonFactor * fundingMultiplier * formMultiplier * methodMultiplier * yearFactor * previousYearFactor * dayNoise
@@ -109,6 +167,7 @@ export function buildMockResponse(period = '2025-01') {
   return {
     applicants_statistics,
     previous_year_statistics,
+    admission_control_numbers: buildAdmissionControlNumbers(year),
     meta: {
       source: 'mock',
       note: 'Демо-данные за полный календарный год. Заполните .env для подключения к 1С.',

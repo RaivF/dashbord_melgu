@@ -16,6 +16,7 @@ const distDir = path.join(rootDir, 'dist')
 const PORT = Number(process.env.PORT || 3001)
 const DEFAULT_TIMEOUT = 30000
 const ALLOWED_ONE_C_METHODS = new Set(['GET', 'POST'])
+const LOCAL_ORIGIN_PATTERN = /^https?:\/\/(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/i
 
 export function normalizePeriod(period) {
   if (!period) return null
@@ -44,6 +45,21 @@ export function isMockModeEnabled(env = process.env) {
   )
 }
 
+export function isCorsOriginAllowed(origin, env = process.env) {
+  if (!origin) return true
+  if (env.CORS_ORIGIN === '*') return true
+
+  if (env.CORS_ORIGIN) {
+    return env.CORS_ORIGIN
+      .split(',')
+      .map((allowedOrigin) => allowedOrigin.trim())
+      .filter(Boolean)
+      .includes(origin)
+  }
+
+  return LOCAL_ORIGIN_PATTERN.test(origin)
+}
+
 function getOneCMethod(env = process.env) {
   const method = String(env.ONE_C_METHOD || 'GET').toUpperCase()
   return ALLOWED_ONE_C_METHODS.has(method) ? method : 'GET'
@@ -54,6 +70,12 @@ function getOneCTimeout(env = process.env) {
   return Number.isFinite(timeout) && timeout > 0 ? timeout : DEFAULT_TIMEOUT
 }
 
+function getSafeOneCErrorMessage(error) {
+  if (error.code === 'ECONNABORTED') return 'Истекло время ожидания ответа 1С'
+  if (error.response?.status) return `1С вернула ошибку HTTP ${error.response.status}`
+  return 'Не удалось получить данные из 1С'
+}
+
 export function createApp(env = process.env) {
   const app = express()
 
@@ -61,7 +83,9 @@ export function createApp(env = process.env) {
 
   app.use(
     cors({
-      origin: env.CORS_ORIGIN && env.CORS_ORIGIN !== '*' ? env.CORS_ORIGIN : true,
+      origin(origin, callback) {
+        callback(null, isCorsOriginAllowed(origin, env))
+      },
     }),
   )
 
@@ -109,18 +133,18 @@ export function createApp(env = process.env) {
       res.json(response.data)
     } catch (error) {
       const status = error.response?.status || 500
+      const safeMessage = getSafeOneCErrorMessage(error)
 
       console.error('Ошибка запроса к 1С:', {
         status,
         message: error.message,
-        response: error.response?.data,
+        responseType: error.response?.data ? typeof error.response.data : null,
       })
 
       res.status(status).json({
         error: 'Ошибка при обращении к 1С',
-        message: error.message,
+        message: safeMessage,
         status,
-        data: error.response?.data || null,
       })
     }
   })

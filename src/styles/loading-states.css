@@ -1,0 +1,278 @@
+﻿/* v11: loading placeholders for charts and tables */
+.hero h1 {
+  margin-top: 0;
+}
+
+.chart[aria-busy='true'],
+.donut-layout[aria-busy='true'] {
+  min-height: clamp(270px, 22vw, 390px);
+}
+
+.chart-loading,
+.table-loading__row {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.72), rgba(30, 41, 59, 0.42));
+}
+
+.chart-loading::after,
+.table-loading__row::after,
+.table-loading__rank::after,
+.table-loading__text span::after,
+.table-loading__text small::after,
+.table-loading__row strong::after,
+.chart-loading__ring::after,
+.chart-loading__legend span::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+  animation: loading-shimmer 1.25s ease-in-out infinite;
+}
+
+.chart-loading {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  border-radius: 24px;
+}
+
+.chart-loading__grid {
+  position: absolute;
+  inset: 18px;
+  border-radius: 18px;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.11) 1px, transparent 1px);
+  background-size: 100% 25%, 16.66% 100%;
+  opacity: 0.72;
+}
+
+.chart-loading--bar .chart-loading__bars {
+  position: absolute;
+  inset: 42px 36px 28px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: clamp(10px, 1vw, 18px);
+}
+
+.chart-loading--bar .chart-loading__bars span {
+  flex: 1 1 0;
+  max-width: 78px;
+  min-width: 26px;
+  border-radius: 18px 18px 0 0;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.72), rgba(56, 189, 248, 0.22));
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.12);
+  animation: loading-pulse 1.15s ease-in-out infinite;
+}
+
+.chart-loading--bar .chart-loading__bars span:nth-child(2n) {
+  animation-delay: 0.14s;
+  background: linear-gradient(180deg, rgba(167, 139, 250, 0.72), rgba(167, 139, 250, 0.22));
+}
+
+.chart-loading--bar .chart-loading__bars span:nth-child(3n) {
+  animation-delay: 0.26s;
+  background: linear-gradient(180deg, rgba(52, 211, 153, 0.68), rgba(52, 211, 153, 0.18));
+}
+
+.chart-loading--area .chart-loading__line,
+.chart-loading--area .chart-loading__glow {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  border-radius: 999px;
+}
+
+.chart-loading--area .chart-loading__line {
+  bottom: 36%;
+  height: 6px;
+  background: rgba(56, 189, 248, 0.78);
+  box-shadow: 0 0 32px rgba(56, 189, 248, 0.24);
+  clip-path: polygon(0 88%, 10% 54%, 22% 62%, 34% 30%, 48% 48%, 62% 18%, 78% 38%, 100% 12%, 100% 100%, 0 100%);
+  animation: loading-pulse 1.2s ease-in-out infinite;
+}
+
+.chart-loading--area .chart-loading__glow {
+  bottom: 16%;
+  height: 42%;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.18), rgba(56, 189, 248, 0.02));
+  clip-path: polygon(0 80%, 10% 48%, 22% 56%, 34% 24%, 48% 42%, 62% 12%, 78% 32%, 100% 6%, 100% 100%, 0 100%);
+}
+
+.chart-loading--donut {
+  min-height: clamp(230px, 18vw, 340px);
+  display: grid;
+  grid-template-columns: minmax(180px, 0.9fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+}
+
+.chart-loading__ring {
+  position: relative;
+  width: min(100%, 260px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: conic-gradient(rgba(56, 189, 248, 0.82), rgba(167, 139, 250, 0.5), rgba(56, 189, 248, 0.28));
+  animation: loading-pulse 1.18s ease-in-out infinite;
+}
+
+.chart-loading__ring::before {
+  content: '';
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  background: #0f172a;
+  z-index: 1;
+}
+
+.chart-loading__legend {
+  display: grid;
+  gap: 16px;
+}
+
+.chart-loading__legend span,
+.table-loading__rank,
+.table-loading__text span,
+.table-loading__text small,
+.table-loading__row strong {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.16);
+}
+
+.chart-loading__legend span {
+  width: 100%;
+  max-width: 260px;
+  height: 22px;
+}
+
+.chart-loading__legend span:nth-child(2) {
+  max-width: 220px;
+}
+
+.chart-loading__legend span:nth-child(3) {
+  max-width: 180px;
+}
+
+.table-loading {
+  display: grid;
+  gap: 10px;
+}
+
+.table-loading__row {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 76px;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 10px 12px;
+  border-radius: 18px;
+}
+
+.table-loading__rank {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+}
+
+.table-loading__text {
+  display: grid;
+  gap: 8px;
+}
+
+.table-loading__text span {
+  width: min(100%, 300px);
+  height: 17px;
+}
+
+.table-loading__text small {
+  width: min(72%, 220px);
+  height: 12px;
+}
+
+.table-loading__row strong {
+  width: 64px;
+  height: 24px;
+  justify-self: end;
+}
+
+@keyframes loading-shimmer {
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes loading-pulse {
+
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .chart-loading--donut {
+    grid-template-columns: 1fr;
+  }
+}
+
+.donut-layout[aria-busy='true'] {
+  display: block;
+}
+
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--in-range,
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-start,
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-end,
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-single {
+  color: #fff;
+}
+
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--in-range {
+  background: rgba(56, 189, 248, 0.18);
+  border-radius: 0;
+  box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.10);
+}
+
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-start,
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-end,
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-single {
+  background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+  font-weight: 900;
+}
+
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-start {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-end {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-single {
+  border-radius: 12px;
+}
+
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-start:hover,
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-end:hover,
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--range-single:hover,
+.dashboard-calendar .react-datepicker__day.dashboard-calendar__day--in-range:hover {
+  color: #fff;
+}

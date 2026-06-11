@@ -1,0 +1,586 @@
+﻿.range-panel__tools {
+  display: grid;
+  gap: 12px;
+  justify-items: end;
+  align-items: start;
+}
+
+.calendar-control {
+  min-width: min(100%, 440px);
+  display: grid;
+  gap: 8px;
+  justify-items: stretch;
+  padding: 12px;
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 22px;
+  background: rgba(8, 20, 39, 0.30);
+}
+
+.calendar-control__topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.calendar-control__topline>span {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(12px, 0.78vw, 15px);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.calendar-control small {
+  display: block;
+  color: var(--muted);
+  font-size: clamp(12px, 0.78vw, 14px);
+  line-height: 1.25;
+}
+
+.calendar-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.72);
+  color: var(--muted-strong);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.calendar-reset:hover {
+  color: #fff;
+  border-color: rgba(56, 189, 248, 0.34);
+}
+
+.dashboard-calendar-wrapper,
+.dashboard-calendar-wrapper>div {
+  width: 100%;
+}
+
+.calendar-button {
+  width: 100%;
+  min-height: 54px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  border: 1px solid rgba(56, 189, 248, 0.30);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(167, 139, 250, 0.14));
+  color: #fff;
+  cursor: pointer;
+  font-size: clamp(17px, 1.1vw, 22px);
+  font-weight: 900;
+  text-align: left;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 14px 34px rgba(14, 165, 233, 0.10);
+}
+
+.calendar-button:hover:not(:disabled) {
+  border-color: rgba(56, 189, 248, 0.58);
+  transform: translateY(-1px);
+}
+
+.calendar-button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.dashboard-calendar-popper {
+  z-index: 20;
+}
+
+.dashboard-calendar.react-datepicker {
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 24px;
+  background: rgba(15, 23, 42, 0.98);
+  color: #f8fafc;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.34);
+  font-family: inherit;
+}
+
+.dashboard-calendar .react-datepicker__header {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.44), rgba(88, 28, 135, 0.30));
+  color: #fff;
+}
+
+.dashboard-calendar .react-datepicker__current-month,
+.dashboard-calendar .react-datepicker-time__header,
+.dashboard-calendar .react-datepicker-year-header {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.dashboard-calendar .react-datepicker__day-name,
+.dashboard-calendar .react-datepicker__day,
+.dashboard-calendar .react-datepicker__time-name,
+.dashboard-calendar .react-datepicker__month-text,
+.dashboard-calendar .react-datepicker__quarter-text,
+.dashboard-calendar .react-datepicker__year-text,
+.dashboard-calendar .react-datepicker__week-number {
+  color: var(--muted-strong);
+  border-radius: 12px;
+  font-weight: 800;
+}
+
+.dashboard-calendar .react-datepicker__day-name,
+.dashboard-calendar .react-datepicker__day,
+.dashboard-calendar .react-datepicker__week-number {
+  width: 2.25rem;
+  line-height: 2.25rem;
+  margin: 0.16rem;
+}
+
+.dashboard-calendar .react-datepicker__month-text,
+.dashboard-calendar .react-datepicker__year-text {
+  width: 5.4rem;
+  padding: 0.8rem 0.2rem;
+  margin: 0.24rem;
+}
+
+.dashboard-calendar .react-datepicker__day:hover,
+.dashboard-calendar .react-datepicker__month-text:hover,
+.dashboard-calendar .react-datepicker__year-text:hover {
+  background: rgba(56, 189, 248, 0.18);
+  color: #fff;
+}
+
+.dashboard-calendar .react-datepicker__day--keyboard-selected,
+.dashboard-calendar .react-datepicker__day--selected,
+.dashboard-calendar .react-datepicker__month-text--keyboard-selected,
+.dashboard-calendar .react-datepicker__month-text--selected,
+.dashboard-calendar .react-datepicker__year-text--keyboard-selected,
+.dashboard-calendar .react-datepicker__year-text--selected {
+  background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+  color: #fff;
+}
+
+.dashboard-calendar .react-datepicker__day--outside-month {
+  color: rgba(148, 163, 184, 0.38);
+}
+
+.dashboard-calendar .react-datepicker__navigation-icon::before {
+  border-color: #e0f2fe;
+}
+
+.dashboard-calendar .react-datepicker__triangle {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .range-panel__tools {
+    width: 100%;
+    justify-items: stretch;
+  }
+
+  .calendar-control {
+    width: 100%;
+  }
+}
+
+/* Calendar layering and Russian UI refinements */
+.range-panel {
+  position: relative;
+  z-index: 100;
+}
+
+.range-panel__tools,
+.calendar-control,
+.dashboard-calendar-wrapper {
+  position: relative;
+  z-index: 120;
+}
+
+.status-bar,
+.stats-grid,
+.dashboard-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.react-datepicker-popper,
+.dashboard-calendar-popper {
+  z-index: 99999 !important;
+}
+
+.dashboard-calendar-popper[data-placement^='bottom'] {
+  padding-top: 10px;
+}
+
+.dashboard-calendar-popper[data-placement^='top'] {
+  padding-bottom: 10px;
+}
+
+.dashboard-calendar.react-datepicker {
+  min-width: 360px;
+  border-radius: 28px;
+  border-color: rgba(56, 189, 248, 0.34);
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.99), rgba(17, 24, 39, 0.99));
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.58),
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 0 60px rgba(56, 189, 248, 0.13);
+}
+
+.dashboard-calendar .react-datepicker__month-container {
+  float: none;
+}
+
+.dashboard-calendar .react-datepicker__header {
+  padding: 18px 16px 12px;
+}
+
+.dashboard-calendar .react-datepicker__current-month,
+.dashboard-calendar .react-datepicker-year-header {
+  text-transform: capitalize;
+}
+
+.dashboard-calendar .react-datepicker__day-names {
+  margin-top: 12px;
+}
+
+.dashboard-calendar .react-datepicker__day-name {
+  color: #bfdbfe;
+  text-transform: lowercase;
+}
+
+.dashboard-calendar .react-datepicker__week-number {
+  color: #93c5fd;
+}
+
+.dashboard-calendar .react-datepicker__navigation {
+  top: 19px;
+}
+
+.dashboard-calendar .react-datepicker__navigation--previous {
+  left: 18px;
+}
+
+.dashboard-calendar .react-datepicker__navigation--next {
+  right: 18px;
+}
+
+.dashboard-calendar .react-datepicker__day--today,
+.dashboard-calendar .react-datepicker__month-text--today,
+.dashboard-calendar .react-datepicker__year-text--today {
+  border: 1px solid rgba(56, 189, 248, 0.42);
+  color: #e0f2fe;
+}
+
+.dashboard-calendar .react-datepicker__day--disabled,
+.dashboard-calendar .react-datepicker__month-text--disabled,
+.dashboard-calendar .react-datepicker__year-text--disabled {
+  color: rgba(148, 163, 184, 0.24);
+}
+
+.dashboard-calendar .react-datepicker__month-text,
+.dashboard-calendar .react-datepicker__year-text {
+  text-transform: capitalize;
+}
+
+@media (max-width: 780px) {
+  .dashboard-calendar.react-datepicker {
+    min-width: min(92vw, 360px);
+  }
+}
+
+.period-menu {
+  position: relative;
+  z-index: 30;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.period-menu__button {
+  min-height: 58px;
+  display: inline-grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  border: 1px solid rgba(56, 189, 248, 0.24);
+  border-radius: 18px;
+  background: rgba(2, 6, 23, 0.28);
+  color: #f8fafc;
+  cursor: pointer;
+  font-size: clamp(16px, 1.04vw, 20px);
+  font-weight: 900;
+  box-shadow: 0 18px 48px rgba(2, 6, 23, 0.22);
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.period-menu__button:hover,
+.period-menu__button--open {
+  transform: translateY(-1px);
+  border-color: rgba(56, 189, 248, 0.56);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(167, 139, 250, 0.18));
+}
+
+.period-menu__button--open svg:last-child {
+  transform: rotate(180deg);
+}
+
+.period-menu__panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: min(720px, calc(100vw - 48px));
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(56, 189, 248, 0.26);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(167, 139, 250, 0.18), transparent 24rem),
+    rgba(15, 23, 42, 0.98);
+  box-shadow: 0 36px 110px rgba(0, 0, 0, 0.46);
+  backdrop-filter: blur(22px);
+  z-index: 90;
+}
+
+.period-menu__panel::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 38px;
+  width: 16px;
+  height: 16px;
+  transform: rotate(45deg);
+  border-left: 1px solid rgba(56, 189, 248, 0.26);
+  border-top: 1px solid rgba(56, 189, 248, 0.26);
+  background: rgba(15, 23, 42, 0.98);
+}
+
+.period-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.period-menu__header span,
+.period-menu__current span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: clamp(12px, 0.82vw, 15px);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.period-menu__header strong {
+  display: block;
+  color: #fff;
+  font-size: clamp(24px, 1.7vw, 34px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.period-menu__close {
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 999px;
+  background: rgba(2, 6, 23, 0.28);
+  color: var(--muted-strong);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.period-menu__close:hover {
+  border-color: rgba(56, 189, 248, 0.38);
+  color: #fff;
+}
+
+.range-tabs--in-menu {
+  justify-content: stretch;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.range-tabs--in-menu .range-tab {
+  min-height: 54px;
+  padding: 0 12px;
+}
+
+.period-menu__current,
+.period-menu__hint {
+  padding: 14px 16px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 20px;
+  background: rgba(2, 6, 23, 0.20);
+}
+
+.period-menu__current strong {
+  display: block;
+  color: var(--muted-strong);
+  font-size: clamp(18px, 1.24vw, 25px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.period-menu__hint {
+  color: var(--muted-strong);
+  font-size: clamp(15px, 1vw, 18px);
+  line-height: 1.35;
+  font-weight: 720;
+}
+
+.period-menu .calendar-control {
+  min-width: 0;
+  width: 100%;
+}
+
+.dashboard-calendar-popper {
+  z-index: 150;
+}
+
+@media (max-width: 980px) {
+
+  .period-menu,
+  .period-menu__button {
+    width: 100%;
+  }
+
+  .period-menu__panel {
+    left: 0;
+    right: auto;
+    width: min(100%, calc(100vw - 36px));
+  }
+
+  .period-menu__panel::before {
+    right: auto;
+    left: 38px;
+  }
+
+  .range-tabs--in-menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* UX update: backend campaign year is moved into period settings; loading locks interactive controls */
+.campaign-year-control {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.10), rgba(2, 6, 23, 0.22));
+}
+
+.campaign-year-control__text {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.campaign-year-control__text span {
+  display: block;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(12px, 0.82vw, 15px);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.campaign-year-control__text strong {
+  display: block;
+  color: #fff;
+  font-size: clamp(32px, 2.2vw, 44px);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.campaign-year-control__text small {
+  display: block;
+  color: var(--muted);
+  font-size: clamp(12px, 0.82vw, 15px);
+  line-height: 1.35;
+}
+
+.campaign-year-control__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.campaign-year-control__button {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 18px;
+  background: rgba(2, 6, 23, 0.28);
+  color: #f8fafc;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 900;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.campaign-year-control__button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(56, 189, 248, 0.44);
+  background: rgba(14, 116, 144, 0.22);
+}
+
+.refresh-button:disabled,
+.period-menu__button:disabled,
+.range-tab:disabled,
+.calendar-reset:disabled,
+.campaign-year-control__button:disabled {
+  cursor: wait;
+  opacity: 0.58;
+  transform: none;
+}
+
+.period-menu__button:disabled:hover,
+.range-tab:disabled:hover,
+.calendar-reset:disabled:hover,
+.campaign-year-control__button:disabled:hover {
+  border-color: rgba(148, 163, 184, 0.18);
+  background: rgba(2, 6, 23, 0.22);
+  color: var(--muted-strong);
+}
+
+.range-tab--active:disabled,
+.period-menu__button--open:disabled {
+  border-color: rgba(56, 189, 248, 0.54);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.28), rgba(167, 139, 250, 0.24));
+  color: #fff;
+}
+
+@media (max-width: 780px) {
+  .campaign-year-control {
+    grid-template-columns: 1fr;
+  }
+
+  .campaign-year-control__actions {
+    width: 100%;
+  }
+
+  .campaign-year-control__button {
+    flex: 1 1 0;
+  }
+}
+
